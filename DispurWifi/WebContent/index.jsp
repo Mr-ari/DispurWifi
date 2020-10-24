@@ -137,17 +137,17 @@ background-size: 100%;">
     <div class="card-body px-lg-5 pt-0">
   
       <!-- Form -->
-      <form class="text-center" style="color: #757575;" action="./showRegistrationId.html">
+      <form class="text-center" style="color: #757575;" method="post" action="LoginCheck">
   
         <!-- Email -->
         <div class="md-form">
-          <input type="text" id="materialLoginFormEmail" class="form-control">
+          <input type="text" name="uname" id="materialLoginFormEmail" class="form-control">
           <label for="materialLoginFormEmail">Registration ID</label>
         </div>
   
         <!-- Password -->
         <div class="md-form">
-          <input type="password" id="materialLoginFormPassword" class="form-control">
+          <input type="password" name="pass" id="materialLoginFormPassword" class="form-control">
           <label for="materialLoginFormPassword">Password</label>
         </div>
   

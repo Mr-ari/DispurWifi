@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.object.user.User;
 
 /**
  * Servlet implementation class LoginCheck
@@ -38,6 +41,18 @@ public class LoginCheck extends HttpServlet {
 		String uname = request.getParameter("uname");
 		String pass = request.getParameter("pass");
 		
+		User user = LoginValidation.validate(uname, pass);
+		if(user == null) {
+			request.getRequestDispatcher("/Error.jsp").forward(request, response);
+		}
+		else if(user.getRole().equals("admin")) {
+			
+		}
+		else {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+			request.getRequestDispatcher("/tariffPlanManagementPortal.jsp").forward(request, response);
+		}
 		
 	}
 

@@ -1,8 +1,6 @@
 package com.login.check;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.object.user.User;
-
 /**
- * Servlet implementation class LoginCheck
+ * Servlet implementation class Logout
  */
-@WebServlet("/LoginCheck")
-public class LoginCheck extends HttpServlet {
+@WebServlet("/Logout")
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginCheck() {
+    public Logout() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +28,10 @@ public class LoginCheck extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession(false);
+		if(session != null)
+		    session.invalidate();
+		request.getRequestDispatcher("/index.jsp").forward(request,response);
 	}
 
 	/**
@@ -40,27 +39,7 @@ public class LoginCheck extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String uname = request.getParameter("uname");
-		String pass = request.getParameter("pass");
-		
-		User user = LoginValidation.validate(uname, pass);
-		if(user == null) {
-			PrintWriter out = response.getWriter();  
-			response.setContentType("text/html"); 
-			out.println("<script type=\"text/javascript\">");  
-			out.println("alert('Invalid Username or Password');");  
-			out.println("window.location.href='index.jsp';");
-			out.println("</script>");
-		}
-		else if(user.getRole().equals("admin")) {
-			
-		}
-		else {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
-			request.getRequestDispatcher("/userTariffMgmt.jsp").forward(request, response);
-		}
-		
+		doGet(request, response);
 	}
 
 }

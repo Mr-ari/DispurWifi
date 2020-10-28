@@ -69,4 +69,49 @@ public class TariffMgmtDao {
 		}
 		return list;
 	}
+	
+	
+	public static String subscribePlan(int user_id,int plan_id) {
+		
+		Connection con = DbConnection.getConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement("insert into user_plan values(?,?)");
+			ps.setInt(1, user_id);
+			ps.setInt(2, plan_id);
+			
+			if(ps.execute()) {
+				return "Can not Subscribe to plan right now";
+			}
+			else {
+				return "Subscribe to the new plan successfully";
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "Can not Subscribe to plan right now";
+	}
+	
+	public static String unsubscribePlan(int user_id,int plan_id) {
+		
+		Connection con = DbConnection.getConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement("delete from user_plan where user_id=? and plan_id=?");
+			ps.setInt(1, user_id);
+			ps.setInt(2, plan_id);
+			
+			if(ps.execute()) {
+				return "Can not Unubscribe to plan right now ! Try after some time";
+			}
+			else {
+				return "Unsubscribe to the plan successfully";
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "Can not Unubscribe to plan right now ! Try after some time";
+	}
 }

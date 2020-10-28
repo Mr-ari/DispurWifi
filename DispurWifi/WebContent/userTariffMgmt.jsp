@@ -84,7 +84,7 @@
 						<td><c:out value="${item.getValidity()}" /></td>
 						<td><c:out value="${item.getRental()}" /></td>
 						<td>
-							<button type="button" class="btn btn-red btn-sm m-0">Subscribe</button>
+						<form action="SubscribePlan.jsp" method="get"><button name="plan_id" value="<c:out value="${item.getPlanId()}" />" type="submit" class="btn btn-red btn-sm m-0">Subscribe</button></form>
 						</td>
 					</tr>
 					<c:set var="count" value="${count + 1}" scope="page" />
@@ -125,7 +125,7 @@
 						<td><c:out value="${item.getValidity()}" /></td>
 						<td><c:out value="${item.getRental()}" /></td>
 						<td>
-							<button type="button" class="btn btn-red btn-sm m-0">Unsubscribe</button>
+							<form action="UnsubscribePlan.jsp" method="get"><button name="plan_id" value="<c:out value="${item.getPlanId()}" />" type="submit" class="btn btn-white btn-sm m-0">Unsubscribe</button></form>
 						</td>
 					</tr>
 					<c:set var="count" value="${count + 1}" scope="page" />
@@ -136,7 +136,7 @@
 	</div>
 
 	<div class="d-flex justify-content-center" style="margin-bottom: 2%;">
-		<form action="logout.jsp">
+		<form action="Backend/logout.jsp">
 			<button type="submit" class="btn btn-primary btn-rounded">Logout</button>
 		</form>
 	</div>

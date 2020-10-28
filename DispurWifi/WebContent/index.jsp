@@ -20,7 +20,7 @@
 
 
 <body
-	style="background-image: url(https://www.affirmednetworks.com/wp-content/uploads/2020/09/a4o-cloud-mobile-1.jpg); background-repeat: no-repeat; background-size: 110%;">
+	style="background-image: url(https://www.affirmednetworks.com/wp-content/uploads/2020/09/a4o-cloud-mobile-1.jpg); background-size: 110%;">
 	<div>
 		<h1 align="center"
 			style="color: white; font-weight: bold; font-family: 'Courier New'">The
